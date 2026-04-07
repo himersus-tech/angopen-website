@@ -93,7 +93,7 @@ export default function Home() {
               </p>
             </div>
             <div className="pt-10 flex items-center justify-center gap-5">
-              <BaseButton>
+              <BaseButton onClick={() => router.push("/signup")}>
                 <p className="pt-0.5 font-semibold! text-[15px] text-white">
                   Junte-se a nós
                 </p>
