@@ -12,7 +12,7 @@ export default function ResetPassword() {
           <Link href={"/"} className="">
             <LogoComponent size={9} />
           </Link>
-          <h1 className="text-white text-3xl ret:text-3xl pt-7 font-extrabold">
+          <h1 className="text-white text-2xl ret:text-3xl pt-7 font-extrabold">
             Redefinir Palavra-chave
           </h1>
           <div className="max-w-80 text-center pt-3 mx-auto">

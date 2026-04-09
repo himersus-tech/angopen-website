@@ -62,7 +62,7 @@ export default function LoginPage() {
         </main>
         <footer className="text-center mt-6 w-full">
           <Link
-            href={"/signup"}
+            href={"/reset"}
             className="text-white hover:underline hover:text-white/70 transition-all group"
           >
             Esqueci minha Palavra-chave
