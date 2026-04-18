@@ -1,20 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
+import axios from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function GET() {
-  const res = await fetch(`${API_URL}feedback/list`);
-  const data = await res.json();
-  return NextResponse.json(data);
+  try {
+    const res = await axios.get(`${API_URL}feedback/list`);
+    return NextResponse.json(res.data, { status: 200 });
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return NextResponse.json(error.response?.data, {
+        status: error.response?.status ?? 500,
+      });
+    }
+    return NextResponse.json(
+      { error: "Erro interno do servidor" },
+      { status: 500 },
+    );
+  }
 }
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const res = await fetch(`${API_URL}feedback/create`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  const data = await res.json();
-  return NextResponse.json(data);
+  try {
+    const body = await req.json();
+    const res = await axios.post(`${API_URL}feedback/create`, body);
+    return NextResponse.json(res.data, { status: 201 });
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return NextResponse.json(error.response?.data, {
+        status: error.response?.status ?? 500,
+      });
+    }
+    return NextResponse.json(
+      { error: "Erro interno do servidor" },
+      { status: 500 },
+    );
+  }
 }

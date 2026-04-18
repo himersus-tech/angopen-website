@@ -42,7 +42,7 @@ const PROVINCIAS = [
 interface FinishFeebackModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit: (province: string, evaluation: number) => void;
+  onSubmit: (province: string, evaluation: number) => Promise<void>;
   isLoading?: boolean;
 }
 
@@ -73,11 +73,16 @@ export function FinishFeebackModal({
     return !next.province && !next.evaluation;
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     if (!validate()) return;
-    onSubmit(province, evaluation!);
-    setProvince("");
-    setEvaluation(null);
+    try {
+      await onSubmit(province, evaluation!);
+      // só reseta se não lançar erro
+      setProvince("");
+      setEvaluation(null);
+    } catch {
+      // não reseta — deixa os dados preenchidos
+    }
   };
 
   const handleClose = () => {

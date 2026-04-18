@@ -13,6 +13,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { useForm, useWatch } from "react-hook-form";
 import { FinishFeebackModal } from "@/app/components/modals/finish-feedback";
 import { toast } from "sonner";
+import axios from "axios";
 
 // ─── tipos ──────────────────────────────────────────────────────────────────
 
@@ -30,21 +31,22 @@ type FeedbackPayload = FeedbackForm & {
 
 // ─── api ────────────────────────────────────────────────────────────────────
 
-const API_URL = "/api/";
-
 async function fetchFeedback() {
-  const res = await fetch(`/api/feedbacks`);
-  const json = await res.json();
-  return json.data;
+  try {
+    const res = await axios.get("/api/feedbacks");
+    return res.data.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function submitFeedback(data: FeedbackPayload) {
-  const res = await fetch(`${API_URL}feedbacks`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  return res.json();
+  try {
+    const res = await axios.post("/api/feedbacks", data);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 // ─── componente de erro ─────────────────────────────────────────────────────
@@ -68,7 +70,8 @@ export default function FeedbackPage() {
 
   const feedbackMutation = useMutation({
     mutationFn: submitFeedback,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      console.log("Feedback enviado com sucesso:", data);
       feedback.refetch();
       setOpenModal(false);
       reset();
@@ -78,11 +81,13 @@ export default function FeedbackPage() {
       });
     },
     onError: (error) => {
-      if (error instanceof Error) {
-        toast.error(
-          error.message ||
-            "Ops, algo deu errado ao enviar o feedback. Tente novamente.",
-        );
+      console.error("Erro ao enviar feedback:", error);
+      if (axios.isAxiosError(error)) {
+        const mensagem =
+          error.response?.data?.message ||
+          error.response?.data?.error ||
+          "Ops, algo deu errado ao enviar o feedback. Tente novamente.";
+        toast.error(mensagem);
         return;
       }
       toast.error("Ops, erro no servidor. Tente novamente.");
@@ -112,10 +117,20 @@ export default function FeedbackPage() {
   const onValid = () => setOpenModal(true);
 
   // chamado pelo modal ao confirmar — recebe province e evaluation
-  const handleSubmitFinal = (province: string, evaluation: number) => {
-    feedbackMutation.mutate({ ...getValues(), province, evaluation });
+  const handleSubmitFinal = (
+    province: string,
+    evaluation: number,
+  ): Promise<void> => {
+    return feedbackMutation
+      .mutateAsync({
+        ...getValues(),
+        province,
+        evaluation,
+      })
+      .catch(() => {
+        // deixa o onError da mutation tratar — só evita o unhandled rejection
+      });
   };
-
   return (
     <div className="flex items-center flex-col justify-between w-full h-dvh">
       <FinishFeebackModal
