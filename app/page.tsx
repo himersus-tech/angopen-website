@@ -9,14 +9,13 @@ import {
   menuNavbar,
   openSourceAgents,
 } from "./types";
-import { ArrowRight, ArrowUpRight, Check, Search } from "lucide-react";
+import { ArrowRight, ArrowUpRight, List, Target } from "lucide-react";
 import { DarkButton } from "./components/molecules/dark-button";
 import { BaseButton } from "./components/molecules/base-button";
 import { useIsScrolledToTop } from "@/hoooks/useIsScrolledToTop";
 import { LogoComponent } from "./components/atoms/logo-component";
 import { useRouter } from "next/navigation";
 import FooterComponent from "./components/molecules/footer-component";
-import Image from "next/image";
 import { Menu } from "iconoir-react/regular";
 import { MobileMenu } from "./components/sheets/mobile-menu";
 import { useState } from "react";
@@ -25,6 +24,17 @@ export default function Home() {
   const isAtTop = useIsScrolledToTop(10);
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState(false);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const navbarHeight = 100; // altura do teu navbar em px
+    const top =
+      element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -67,27 +77,33 @@ export default function Home() {
           </p>
         </div>
         <nav className="flex items-center gap-16">
-          <DarkButton className="pot:flex! hidden!">
+          {/* <DarkButton className="pot:flex! hidden!">
             <Search className="size-4 text-white/50" />
             <p className="pt-0.5 font-semibold! text-[15px] text-white">
               Pesquisa
             </p>
-          </DarkButton>
+          </DarkButton> */}
           {menuNavbar.map((item, index) => (
-            <Link
-              className="font-semibold! pot:flex hidden transition-all hover:text-white/60 text-[15px] text-white"
+            <button
+              className="font-semibold! cursor-pointer pot:flex hidden transition-all hover:text-white/60 text-[15px] text-white"
               key={index}
-              href={item.href}
+              onClick={() => {
+                if (item.type === "internal") {
+                  scrollToSection(item.href);
+                } else if (item.type === "external") {
+                  router.push(item.href);
+                }
+              }}
             >
               {item.name}
-            </Link>
+            </button>
           ))}
           <BaseButton
-            onClick={() => router.push("/signin")}
+            onClick={() => router.push("/private/feedback")}
             className="pot:flex! hidden!"
           >
             <p className="pt-0.5 font-semibold! text-[15px] text-white">
-              Entrar
+              Contribuir
             </p>
           </BaseButton>
           <button
@@ -98,7 +114,7 @@ export default function Home() {
           </button>
         </nav>
       </div>
-      <header className="relative z-10">
+      <header id="home" className="relative z-10">
         <section>
           <div className="pot:max-w-xl pot:px-0 px-5 pt-32 mx-auto text-center">
             <h1 className="text-white ret:text-6xl text-4xl pot:text-7xl pot:leading-20 font-semibold">
@@ -114,7 +130,10 @@ export default function Home() {
             </div>
             <div className="pt-10 px-5 w-full flex ret:flex-row flex-col items-center justify-center gap-3 ret:gap-5">
               <BaseButton
-                onClick={() => router.push("/signup")}
+                onClick={() => {
+                  const url = process.env.NEXT_PUBLIC_WHATSAPP_GROUP;
+                  if (url) window.open(url, "_blank", "noopener,noreferrer");
+                }}
                 className="ret:w-auto w-full"
               >
                 <p className="pt-0.5 font-semibold! text-[15px]  text-white">
@@ -122,9 +141,12 @@ export default function Home() {
                 </p>
                 <ArrowUpRight className="size-4 stroke-4 text-white/50" />
               </BaseButton>
-              <DarkButton className="ret:w-auto w-full">
+              <DarkButton
+                onClick={() => router.push("/overview")}
+                className="ret:w-auto w-full"
+              >
                 <p className="pt-0.5 font-semibold! text-[15px] text-white">
-                  Explorar Plataforma
+                  Visão Geral
                 </p>
               </DarkButton>
             </div>
@@ -147,17 +169,18 @@ export default function Home() {
                 <header className="">
                   <div className="flex p-5 border-b border-zinc-900 items-center gap-4">
                     <div>
-                      <Image
-                        width={30}
-                        height={30}
-                        alt="image-avatar"
-                        src={item.image}
-                        className="size-10 rounded-full"
+                      <div
+                        style={{
+                          backgroundImage: `url(${item.image})`,
+                        }}
+                        className="bg-cover rounded-full bg-center size-10"
                       />
                     </div>
                     <div>
                       <p className="text-white font-semibold">{item.name}</p>
-                      <p className="text-zinc-400 text-sm">{item.area}</p>
+                      <p className="text-zinc-400 line-clamp-1 text-sm">
+                        {item.area}
+                      </p>
                     </div>
                   </div>
                   <div className="mt-1 p-5">
@@ -191,7 +214,10 @@ export default function Home() {
                   </div>
                 </header>
                 <footer className="border-t border-zinc-900  flex items-center justify-between">
-                  <button className="w-full cursor-pointer  py-4 flex items-center text-white justify-between px-4 gap-2 font-semibold! text-sm transition-all hover:bg-zinc-900/80 rounded-b-2xl">
+                  <button
+                    onClick={() => window.open(item.linkedin, "_blank")}
+                    className="w-full cursor-pointer  py-4 flex items-center text-white justify-between px-4 gap-2 font-semibold! text-sm transition-all hover:bg-zinc-900/80 rounded-b-2xl"
+                  >
                     Visitar Perfil
                     <ArrowRight className="size-4 stroke-2 text-white/50" />
                   </button>
@@ -200,7 +226,7 @@ export default function Home() {
             ))}
           </div>
           <footer className="flex items-center justify-end mt-10">
-            <Link href={"/overview"}>
+            <Link href={"/private/feedback"}>
               <DarkButton>
                 <p className="pt-0.5 font-semibold! text-[15px] text-white">
                   Deixar Feedback
@@ -222,7 +248,7 @@ export default function Home() {
               Commitando para um Ecossistema de Software Livre
             </h2>
           </header>
-          <div className="mt-16 pot:max-w-5xl mx-auto grid ret:grid-cols-2 pot:grid-cols-10 gap-2">
+          <div className="mt-16 pot:max-w-6xl mx-auto grid ret:grid-cols-2 pot:grid-cols-10 gap-2">
             {features.map((item, index) => (
               <div
                 key={index}
@@ -252,8 +278,8 @@ export default function Home() {
                 <footer className="flex flex-col gap-2">
                   {item.tags.map((tag, index) => (
                     <p key={index} className="flex items-center ">
-                      <Check className="size-4 text-white" />
-                      <span className="text-white ml-2 text-sm">{tag}</span>
+                      <List className="size-4 text-zinc-500" />
+                      <span className="text-white ml-2 ">{tag}</span>
                     </p>
                   ))}
                 </footer>
@@ -329,7 +355,13 @@ export default function Home() {
           </div>
 
           <footer className="flex items-center justify-center mt-12">
-            <BaseButton className="text-white font-semibold">
+            <BaseButton
+              onClick={() => {
+                const url = process.env.NEXT_PUBLIC_WHATSAPP_GROUP;
+                if (url) window.open(url, "_blank", "noopener,noreferrer");
+              }}
+              className="text-white font-semibold"
+            >
               Juntar-se à Comunidade
             </BaseButton>
           </footer>

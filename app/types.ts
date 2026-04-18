@@ -3,19 +3,23 @@ import { Gem, GitBranch, GitPullRequest, UserRound } from "lucide-react";
 export const menuNavbar = [
   {
     name: "Início",
-    href: "#",
+    href: "home",
+    type: "internal",
   },
   {
     name: "Sistema",
-    href: "#",
-  },
-  {
-    name: "Projectos",
-    href: "#",
+    href: "system",
+    type: "internal",
   },
   {
     name: "Comunidade",
-    href: "#",
+    href: "community",
+    type: "internal",
+  },
+  {
+    name: "Visão Geral",
+    href: "/overview",
+    type: "external",
   },
 ];
 
@@ -162,40 +166,40 @@ export const allTechLanguages = [
 
 export const comments = [
   {
-    name: "Maria Salembe",
-    area: "Desenvolvedora Front-end",
-    image: "https://avatars.githubusercontent.com/u/105380583?v=4",
-    languages: ["JavaScript", "TypeScript", "Python"],
-    linkedin: "https://www.linkedin.com/in/maria-salembe/",
+    name: "Justino Soares",
+    area: "Software Engineer | Back-end Developer",
+    image: "/users/just.png",
+    languages: ["PHP", "TypeScript", "Python", "SQL"],
+    linkedin: "https://www.linkedin.com/in/justino-soares-a56833292/",
     comment:
       "Excelente iniciativa! O Dravo é uma plataforma incrível para conectar profissionais de software livre em Angola. Estou ansiosa para colaborar e contribuir para o ecossistema de código aberto do país.",
   },
   {
-    name: "João Silva",
-    area: "Engenheiro de Software",
-    image: "https://avatars.githubusercontent.com/u/105380583?v=4",
-    languages: ["Java", "Python", "Go", "C++"],
-    linkedin: "https://www.linkedin.com/in/joao-silva/",
+    name: "Domingos Franco",
+    area: "Back-end Developer | Security Enthusiast",
+    image: "/users/germano.png",
+    languages: ["Java", "Python", "TypeScript", "C++"],
+    linkedin: "https://www.linkedin.com/in/domingos-germano-franco-231550296/",
     comment:
-      "Parabéns pela criação do Dravo! É inspirador ver uma plataforma dedicada a promover o software livre em Angola. Mal posso esperar para explorar os projetos e me envolver com a comunidade.",
+      "A Angopen é uma iniciativa fantástica para fortalecer a comunidade de software livre em Angola. Estou animado para compartilhar meus conhecimentos e aprender com outros profissionais apaixonados por código aberto.",
   },
   {
-    name: "Ana Costa",
-    area: "Desenvolvedora Back-end",
-    image: "https://avatars.githubusercontent.com/u/105380583?v=4",
-    languages: ["C++", "Go"],
-    linkedin: "https://www.linkedin.com/in/ana-costa/",
+    name: "Finéias Jilaiassule",
+    area: "Software Engineer | Front-end Developer",
+    image: "/users/fineias.jpeg",
+    languages: ["TypeScript", "C++", "Shell", "React Native"],
+    linkedin: "https://www.linkedin.com/in/fin%C3%A9ias-jilaiassule-422607376/",
     comment:
-      "O Dravo é uma iniciativa fantástica para fortalecer a comunidade de software livre em Angola. Estou animada para compartilhar meus conhecimentos e aprender com outros profissionais apaixonados por código aberto.",
+      "A Angopen veio para conectar desenvolvedores de software livre em Angola. Estou ansioso para colaborar com outros profissionais e contribuir para o crescimento do ecossistema de código aberto no país.",
   },
   {
-    name: "Carlos Mendes",
-    area: "Desenvolvedor Full Stack",
-    image: "https://avatars.githubusercontent.com/u/105380583?v=4",
-    languages: ["Ruby", "PHP"],
-    linkedin: "https://www.linkedin.com/in/carlos-mendes/",
+    name: "Mário Salembe",
+    area: "Software Engineer | UI/UX Designer",
+    image: "/users/level.png",
+    languages: ["TypeScript", "React Native", "Shell", "Go"],
+    linkedin: "https://www.linkedin.com/in/mariosalembe/",
     comment:
-      "Incrível ver uma plataforma como o Dravo surgindo em Angola! Estou ansioso para colaborar com outros desenvolvedores e contribuir para o crescimento do software livre no país.",
+      "Incrível ver uma plataforma como a Angopen surgindo em Angola! Estou ansioso para colaborar com outros desenvolvedores e contribuir para o crescimento do software livre no país.",
   },
 ];
 
