@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import TanstackProvider from "./components/providers/tanstack-provider";
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const BASE_URL = "https://angopen.ao";
+const BASE_URL = "https://angopen.himersus.com";
 
 export const viewport: Viewport = {
   themeColor: "#0a0a0a",
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1200,
+        width: 900,
         height: 630,
         alt: "Angopen — O Hub do Open Source Angolano",
       },
@@ -83,12 +84,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png" }],
+    icon: [{ url: "/favicon.ico" }],
   },
 };
 
@@ -133,10 +129,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#0a0a0a] min-h-full flex flex-col">
-        <TanstackProvider>
-          {children}
-        </TanstackProvider>
-        </body>
+        <TanstackProvider>{children}</TanstackProvider>
+        <Toaster />
+      </body>
     </html>
   );
 }
