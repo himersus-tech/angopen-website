@@ -24,7 +24,7 @@ export const menuNavbar = [
 ];
 
 export const allTechLanguages = [
-  // --- WEB FRONTEND & BACKEND ---
+  // --- WEB FRONTEND ---
   {
     name: "JavaScript",
     color: "#F7DF1E",
@@ -38,10 +38,115 @@ export const allTechLanguages = [
     text: "text-blue-500",
   },
   {
+    name: "HTML",
+    color: "#E34F26",
+    bg: "bg-orange-600/10",
+    text: "text-orange-500",
+  },
+  {
+    name: "CSS",
+    color: "#1572B6",
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "React",
+    color: "#61DAFB",
+    bg: "bg-sky-400/10",
+    text: "text-sky-400",
+  },
+  { name: "Next.js", color: "#ffffff", bg: "bg-white/10", text: "text-white" },
+  {
+    name: "Vue.js",
+    color: "#4FC08D",
+    bg: "bg-green-400/10",
+    text: "text-green-400",
+  },
+  {
+    name: "Nuxt.js",
+    color: "#00DC82",
+    bg: "bg-emerald-400/10",
+    text: "text-emerald-400",
+  },
+  {
+    name: "Angular",
+    color: "#DD0031",
+    bg: "bg-red-600/10",
+    text: "text-red-500",
+  },
+  {
+    name: "Svelte",
+    color: "#FF3E00",
+    bg: "bg-orange-500/10",
+    text: "text-orange-500",
+  },
+  {
+    name: "SolidJS",
+    color: "#2C4F7C",
+    bg: "bg-blue-800/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "Astro",
+    color: "#FF5D01",
+    bg: "bg-orange-600/10",
+    text: "text-orange-400",
+  },
+  {
+    name: "Remix",
+    color: "#121212",
+    bg: "bg-zinc-800/10",
+    text: "text-zinc-300",
+  },
+  {
+    name: "Qwik",
+    color: "#AC7EF4",
+    bg: "bg-purple-400/10",
+    text: "text-purple-400",
+  },
+
+  // --- WEB BACKEND ---
+  {
+    name: "Node.js",
+    color: "#339933",
+    bg: "bg-green-600/10",
+    text: "text-green-500",
+  },
+  {
+    name: "Express",
+    color: "#ffffff",
+    bg: "bg-white/10",
+    text: "text-zinc-300",
+  },
+  {
+    name: "Fastify",
+    color: "#000000",
+    bg: "bg-zinc-900/10",
+    text: "text-zinc-300",
+  },
+  {
+    name: "NestJS",
+    color: "#E0234E",
+    bg: "bg-red-600/10",
+    text: "text-red-400",
+  },
+  {
     name: "PHP",
     color: "#777BB4",
     bg: "bg-indigo-400/10",
     text: "text-indigo-400",
+  },
+  {
+    name: "Laravel",
+    color: "#FF2D20",
+    bg: "bg-red-500/10",
+    text: "text-red-400",
+  },
+  {
+    name: "Symfony",
+    color: "#000000",
+    bg: "bg-zinc-900/10",
+    text: "text-zinc-300",
   },
   {
     name: "Python",
@@ -49,13 +154,133 @@ export const allTechLanguages = [
     bg: "bg-blue-400/10",
     text: "text-blue-400",
   },
-  { name: "Ruby", color: "#CC342D", bg: "bg-red-600/10", text: "text-red-600" },
+  {
+    name: "Django",
+    color: "#092E20",
+    bg: "bg-green-900/10",
+    text: "text-green-400",
+  },
+  {
+    name: "Flask",
+    color: "#000000",
+    bg: "bg-zinc-900/10",
+    text: "text-zinc-300",
+  },
+  {
+    name: "FastAPI",
+    color: "#009688",
+    bg: "bg-teal-500/10",
+    text: "text-teal-400",
+  },
+  { name: "Ruby", color: "#CC342D", bg: "bg-red-600/10", text: "text-red-500" },
+  {
+    name: "Rails",
+    color: "#CC0000",
+    bg: "bg-red-700/10",
+    text: "text-red-400",
+  },
   { name: "Go", color: "#00ADD8", bg: "bg-cyan-400/10", text: "text-cyan-400" },
+  {
+    name: "Gin",
+    color: "#00ACD7",
+    bg: "bg-cyan-500/10",
+    text: "text-cyan-300",
+  },
+  {
+    name: "Fiber",
+    color: "#00ACD7",
+    bg: "bg-cyan-600/10",
+    text: "text-cyan-300",
+  },
   {
     name: "Java",
     color: "#ED8B00",
     bg: "bg-orange-500/10",
     text: "text-orange-500",
+  },
+  {
+    name: "Spring Boot",
+    color: "#6DB33F",
+    bg: "bg-green-500/10",
+    text: "text-green-400",
+  },
+  {
+    name: "Kotlin",
+    color: "#7F52FF",
+    bg: "bg-purple-500/10",
+    text: "text-purple-500",
+  },
+  {
+    name: "Ktor",
+    color: "#7F52FF",
+    bg: "bg-purple-600/10",
+    text: "text-purple-400",
+  },
+  {
+    name: "Elixir",
+    color: "#4E2A8E",
+    bg: "bg-purple-700/10",
+    text: "text-purple-400",
+  },
+  {
+    name: "Phoenix",
+    color: "#FD4F00",
+    bg: "bg-orange-600/10",
+    text: "text-orange-400",
+  },
+  {
+    name: "Rust",
+    color: "#DEA584",
+    bg: "bg-orange-800/10",
+    text: "text-orange-300",
+  },
+  {
+    name: "Actix",
+    color: "#DEA584",
+    bg: "bg-orange-700/10",
+    text: "text-orange-300",
+  },
+  {
+    name: "Axum",
+    color: "#DEA584",
+    bg: "bg-orange-700/10",
+    text: "text-orange-300",
+  },
+  {
+    name: "C#",
+    color: "#239120",
+    bg: "bg-green-600/10",
+    text: "text-green-500",
+  },
+  {
+    name: ".NET",
+    color: "#512BD4",
+    bg: "bg-purple-600/10",
+    text: "text-purple-400",
+  },
+  {
+    name: "Scala",
+    color: "#DC322F",
+    bg: "bg-red-700/10",
+    text: "text-red-400",
+  },
+  {
+    name: "Haskell",
+    color: "#5D4F85",
+    bg: "bg-indigo-800/10",
+    text: "text-indigo-300",
+  },
+  {
+    name: "Clojure",
+    color: "#5881D8",
+    bg: "bg-blue-600/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "Erlang",
+    color: "#A90533",
+    bg: "bg-red-800/10",
+    text: "text-red-400",
   },
 
   // --- MOBILE ---
@@ -64,23 +289,53 @@ export const allTechLanguages = [
     color: "#0175C2",
     bg: "bg-blue-300/10",
     text: "text-blue-300",
-  }, // Flutter
+  },
   {
-    name: "Kotlin",
-    color: "#7F52FF",
-    bg: "bg-purple-500/10",
-    text: "text-purple-500",
-  }, // Android
+    name: "Flutter",
+    color: "#02569B",
+    bg: "bg-blue-700/10",
+    text: "text-blue-400",
+  },
   {
     name: "Swift",
     color: "#F05138",
     bg: "bg-red-500/10",
-    text: "text-red-500",
-  }, // iOS
+    text: "text-red-400",
+  },
+  {
+    name: "SwiftUI",
+    color: "#F05138",
+    bg: "bg-red-400/10",
+    text: "text-red-300",
+  },
+  {
+    name: "Objective-C",
+    color: "#438EFF",
+    bg: "bg-blue-400/10",
+    text: "text-blue-400",
+  },
   {
     name: "React Native",
     color: "#61DAFB",
     bg: "bg-sky-400/10",
+    text: "text-sky-400",
+  },
+  {
+    name: "Expo",
+    color: "#000020",
+    bg: "bg-zinc-900/10",
+    text: "text-zinc-300",
+  },
+  {
+    name: "Ionic",
+    color: "#3880FF",
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "Capacitor",
+    color: "#119EFF",
+    bg: "bg-sky-500/10",
     text: "text-sky-400",
   },
 
@@ -95,34 +350,120 @@ export const allTechLanguages = [
     name: "C++",
     color: "#00599C",
     bg: "bg-blue-600/10",
-    text: "text-blue-600",
-  },
-  {
-    name: "C#",
-    color: "#239120",
-    bg: "bg-green-600/10",
-    text: "text-green-600",
-  },
-  {
-    name: "Rust",
-    color: "#DEA584",
-    bg: "bg-orange-800/10",
-    text: "text-orange-300",
+    text: "text-blue-500",
   },
   {
     name: "Zig",
     color: "#F7A41D",
     bg: "bg-yellow-600/10",
-    text: "text-yellow-600",
+    text: "text-yellow-500",
+  },
+  {
+    name: "Assembly",
+    color: "#6E4C13",
+    bg: "bg-yellow-900/10",
+    text: "text-yellow-700",
+  },
+  {
+    name: "WASM",
+    color: "#654FF0",
+    bg: "bg-violet-600/10",
+    text: "text-violet-400",
   },
 
-  // --- DATA & SCRIPTS ---
-  { name: "R", color: "#276DC3", bg: "bg-blue-500/10", text: "text-blue-500" },
+  // --- DATA & AI ---
+  {
+    name: "Python",
+    color: "#3776AB",
+    bg: "bg-blue-400/10",
+    text: "text-blue-400",
+  },
+  { name: "R", color: "#276DC3", bg: "bg-blue-500/10", text: "text-blue-400" },
+  {
+    name: "Julia",
+    color: "#9558B2",
+    bg: "bg-purple-600/10",
+    text: "text-purple-400",
+  },
   {
     name: "SQL",
     color: "#4479A1",
     bg: "bg-blue-700/10",
-    text: "text-blue-700",
+    text: "text-blue-500",
+  },
+  {
+    name: "PostgreSQL",
+    color: "#4169E1",
+    bg: "bg-blue-600/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "MySQL",
+    color: "#4479A1",
+    bg: "bg-blue-700/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "MongoDB",
+    color: "#47A248",
+    bg: "bg-green-600/10",
+    text: "text-green-500",
+  },
+  {
+    name: "Redis",
+    color: "#DC382D",
+    bg: "bg-red-600/10",
+    text: "text-red-400",
+  },
+  {
+    name: "Prisma",
+    color: "#2D3748",
+    bg: "bg-slate-700/10",
+    text: "text-slate-300",
+  },
+  {
+    name: "Drizzle",
+    color: "#C5F74F",
+    bg: "bg-lime-400/10",
+    text: "text-lime-400",
+  },
+  {
+    name: "TensorFlow",
+    color: "#FF6F00",
+    bg: "bg-orange-600/10",
+    text: "text-orange-400",
+  },
+  {
+    name: "PyTorch",
+    color: "#EE4C2C",
+    bg: "bg-red-500/10",
+    text: "text-red-400",
+  },
+
+  // --- DEVOPS & INFRA ---
+  {
+    name: "Docker",
+    color: "#2496ED",
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "Kubernetes",
+    color: "#326CE5",
+    bg: "bg-blue-600/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "Terraform",
+    color: "#7B42BC",
+    bg: "bg-purple-600/10",
+    text: "text-purple-400",
+  },
+  {
+    name: "Ansible",
+    color: "#EE0000",
+    bg: "bg-red-600/10",
+    text: "text-red-400",
   },
   {
     name: "Shell",
@@ -131,37 +472,114 @@ export const allTechLanguages = [
     text: "text-green-400",
   },
   {
+    name: "Bash",
+    color: "#4EAA25",
+    bg: "bg-green-500/10",
+    text: "text-green-400",
+  },
+  {
+    name: "PowerShell",
+    color: "#5391FE",
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
+  },
+  {
+    name: "Nginx",
+    color: "#009639",
+    bg: "bg-green-600/10",
+    text: "text-green-500",
+  },
+  {
+    name: "Linux",
+    color: "#FCC624",
+    bg: "bg-yellow-500/10",
+    text: "text-yellow-400",
+  },
+
+  // --- SCRIPTS & OTHERS ---
+  {
     name: "Lua",
     color: "#000080",
     bg: "bg-blue-900/10",
     text: "text-blue-300",
   },
-
-  // --- OTHERS ---
   {
-    name: "Elixir",
-    color: "#4E2A8E",
-    bg: "bg-purple-700/10",
-    text: "text-purple-400",
+    name: "Perl",
+    color: "#39457E",
+    bg: "bg-indigo-700/10",
+    text: "text-indigo-400",
   },
   {
-    name: "Haskell",
-    color: "#5D4F85",
-    bg: "bg-indigo-800/10",
-    text: "text-indigo-300",
+    name: "Groovy",
+    color: "#4298B8",
+    bg: "bg-blue-500/10",
+    text: "text-blue-400",
   },
   {
-    name: "Scala",
-    color: "#DC322F",
-    bg: "bg-red-700/10",
-    text: "text-red-400",
+    name: "MATLAB",
+    color: "#0076A8",
+    bg: "bg-blue-600/10",
+    text: "text-blue-400",
   },
   {
     name: "Solidity",
     color: "#363636",
     bg: "bg-zinc-500/10",
     text: "text-zinc-400",
-  }, // Web3
+  },
+  {
+    name: "Move",
+    color: "#4DA1F5",
+    bg: "bg-blue-400/10",
+    text: "text-blue-300",
+  },
+  {
+    name: "Cairo",
+    color: "#FF6B6B",
+    bg: "bg-red-400/10",
+    text: "text-red-300",
+  },
+
+  // --- CSS FRAMEWORKS ---
+  {
+    name: "Tailwind CSS",
+    color: "#06B6D4",
+    bg: "bg-cyan-500/10",
+    text: "text-cyan-400",
+  },
+  {
+    name: "Sass",
+    color: "#CC6699",
+    bg: "bg-pink-500/10",
+    text: "text-pink-400",
+  },
+  {
+    name: "Bootstrap",
+    color: "#7952B3",
+    bg: "bg-purple-600/10",
+    text: "text-purple-400",
+  },
+
+  // --- TESTING ---
+  { name: "Jest", color: "#C21325", bg: "bg-red-700/10", text: "text-red-400" },
+  {
+    name: "Vitest",
+    color: "#6E9F18",
+    bg: "bg-lime-600/10",
+    text: "text-lime-400",
+  },
+  {
+    name: "Cypress",
+    color: "#17202C",
+    bg: "bg-zinc-900/10",
+    text: "text-zinc-300",
+  },
+  {
+    name: "Playwright",
+    color: "#2EAD33",
+    bg: "bg-green-600/10",
+    text: "text-green-400",
+  },
 ];
 
 export const comments = [
@@ -169,10 +587,10 @@ export const comments = [
     name: "Justino Soares",
     area: "Software Engineer | Back-end Developer",
     image: "/users/just.png",
-    languages: ["PHP", "TypeScript", "Python", "SQL"],
+    languages: ["Node.js", "TypeScript", "Python", "SQL"],
     linkedin: "https://www.linkedin.com/in/justino-soares-a56833292/",
     comment:
-      "Excelente iniciativa! O Dravo é uma plataforma incrível para conectar profissionais de software livre em Angola. Estou ansiosa para colaborar e contribuir para o ecossistema de código aberto do país.",
+      "Excelente iniciativa! A Angopen é uma plataforma incrível para conectar profissionais de software livre em Angola. Estou ansiosa para colaborar e contribuir para o ecossistema de código aberto do país.",
   },
   {
     name: "Domingos Franco",
