@@ -65,8 +65,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 900,
-        height: 630,
+        width: 300,
+        height: 300,
         alt: "Angopen — O Hub do Open Source Angolano",
       },
     ],
