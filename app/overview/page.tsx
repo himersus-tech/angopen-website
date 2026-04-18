@@ -53,20 +53,20 @@ export default function Overview() {
         <div className="pot:max-w-3xl mx-auto flex items-center justify-between">
           <Link
             href={"/"}
-            className="flex gap-3 uppercase items-center text-white text-xl font-semibold"
+            className="flex gap-3 uppercase items-center text-white text-xl pot:font-semibold"
           >
             <LogoComponent size={7} />
             <span className="mt-2">Angopen</span>
           </Link>
           <div className="flex items-center gap-3">
             <Link href={"/private/feedback"} className="ret:flex hidden">
-              <BaseButton className="text-white!  font-semibold rounded-lg!">
+              <BaseButton className="text-white!  pot:font-semibold rounded-lg!">
                 Deixe seu Feedback
               </BaseButton>
             </Link>
             <DarkButton
               onClick={() => window.open("https://github.com/Angopen")}
-              className="text-white! font-semibold rounded-lg!"
+              className="text-white! pot:font-semibold rounded-lg!"
             >
               <Github className="inline-block" />
               Github
@@ -101,7 +101,7 @@ export default function Overview() {
                 >
                   <span className="text-zinc-600">-</span>
                   <span>
-                    <span className="font-semibold uppercase text-white">
+                    <span className="pot:font-semibold uppercase text-white">
                       {feature.title}
                     </span>
                     . {feature.description}
@@ -191,7 +191,7 @@ export default function Overview() {
                           <path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 7C11.4872 7 10.9925 7.07719 10.5269 7.21995C11.3954 7.61175 12 8.48527 12 9.5C12 10.8807 10.8807 12 9.5 12C8.48527 12 7.61175 11.3954 7.22057 10.5268C7.07719 10.9925 7 11.4872 7 12C7 14.7614 9.23858 17 12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7Z"></path>
                         </svg>
                       )}
-                      <h4 className=" text-white font-semibold">
+                      <h4 className=" text-white pot:font-semibold">
                         {persona.title}
                       </h4>
                     </div>
@@ -200,7 +200,7 @@ export default function Overview() {
                 ))}
               </div>
               <Link href={"/signup"}>
-                <BaseButton className="mt-10 ret:w-auto! w-full! py-6! font-semibold! rounded-lg! text-base!">
+                <BaseButton className="mt-10 ret:w-auto! w-full! py-6! pot:font-semibold! rounded-lg! text-base!">
                   Quero Participar
                 </BaseButton>
               </Link>

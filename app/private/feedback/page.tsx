@@ -186,7 +186,7 @@ export default function FeedbackPage() {
       <main className="h-full">
         <main className="w-full max-w-80 mt-10">
           <header>
-            <h1 className="text-white text-center text-4xl pt-7 font-extrabold">
+            <h1 className="text-white text-center text-4xl pt-7 pot:font-extrabold">
               Feedback
             </h1>
             <div className="max-w-80 text-center pt-3 mx-auto mb-7">
@@ -278,7 +278,7 @@ export default function FeedbackPage() {
 
             <BaseButton
               type="submit"
-              className="w-full! mt-3 py-6! font-semibold! rounded-lg! text-base!"
+              className="w-full! mt-3 py-6! pot:font-semibold! rounded-lg! text-base!"
             >
               Enviar Feedback
             </BaseButton>

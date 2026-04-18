@@ -122,7 +122,7 @@ export function FinishFeebackModal({
                 <X className="size-5 text-zinc-600 hover:text-zinc-200 transition-colors" />
               </button>
             </div>
-            <DialogTitle className="text-white pt-5 text-2xl font-semibold max-w-lg">
+            <DialogTitle className="text-white pt-5 text-2xl pot:font-semibold max-w-lg">
               Mais um passo!
             </DialogTitle>
             <DialogDescription className="text-zinc-300 mt-2 text-sm">
@@ -181,7 +181,7 @@ export function FinishFeebackModal({
                       setEvaluation(item);
                       setErrors((prev) => ({ ...prev, evaluation: "" }));
                     }}
-                    className={`w-full! first:rounded-l-lg! last:rounded-r-lg! rounded-none! leading-0! px-0! py-5! font-mono! text-base! font-semibold! ${
+                    className={`w-full! first:rounded-l-lg! last:rounded-r-lg! rounded-none! leading-0! px-0! py-5! font-mono! text-base! pot:font-semibold! ${
                       evaluation !== null && item <= evaluation
                         ? "bg-orange-500! border-orange-500! text-white!" // ← selecionado e anteriores
                         : "text-white!"
@@ -199,7 +199,7 @@ export function FinishFeebackModal({
             <BaseButton
               type="submit"
               disabled={isLoading}
-              className="font-semibold"
+              className="pot:font-semibold"
             >
               {isLoading ? "A enviar..." : "Finalizar Feedback"}
             </BaseButton>

@@ -9,7 +9,7 @@ import {
   menuNavbar,
   openSourceAgents,
 } from "./types";
-import { ArrowRight, ArrowUpRight, List, Target } from "lucide-react";
+import { ArrowRight, ArrowUpRight, List } from "lucide-react";
 import { DarkButton } from "./components/molecules/dark-button";
 import { BaseButton } from "./components/molecules/base-button";
 import { useIsScrolledToTop } from "@/hoooks/useIsScrolledToTop";
