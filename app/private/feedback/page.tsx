@@ -113,7 +113,7 @@ export default function FeedbackPage() {
   const onValid = () => setOpenModal(true);
 
   // chamado pelo modal ao confirmar — recebe province e evaluation
-  const handleSubmitFinal = (
+  const handleSubmitFinal = async (
     province: string,
     evaluation: number,
   ): Promise<void> => {

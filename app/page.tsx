@@ -116,8 +116,8 @@ export default function Home() {
       </div>
       <header id="home" className="relative z-10">
         <section>
-          <div className="pot:max-w-xl pot:px-0 px-5 pt-32 mx-auto text-center">
-            <h1 className="text-white ret:text-6xl text-4xl pot:text-7xl pot:leading-20 pot:font-semibold">
+          <div className="pot:max-w-2xl pot:px-0 px-5 pt-32 mx-auto text-center">
+            <h1 className="text-white ret:text-6xl text-4xl pot:text-7xl pot:leading-20 pot:font-extrabold">
               O Hub do <span className="text-base-design">Open Source</span>{" "}
               Angolano
             </h1>
@@ -155,7 +155,7 @@ export default function Home() {
 
         <section className="mt-20 pot:mx-20 mx-3 super_shadow bg-[#0a0a0a] p-8 rounded-2xl border border-zinc-900">
           <header>
-            <h2 className="text-3xl text-white pot:font-semibold">
+            <h2 className="pot:text-3xl text-2xl text-white pot:font-semibold">
               Profissionais Open Source
             </h2>
             <p className="text-zinc-600 text-lg uppercase">Angola</p>
