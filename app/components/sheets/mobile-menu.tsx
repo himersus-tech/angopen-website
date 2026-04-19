@@ -79,11 +79,11 @@ export function MobileMenu({ open, onOpenChange }: SheetDemoProps) {
               </Link>
             </div>
             <BaseButton
-              onClick={() => router.push("/signin")}
+              onClick={() => router.push("/private/feedback")}
               className="w-full!"
             >
               <p className="pt-0.5  font-semibold! text-[15px] text-white">
-                Entrar
+                Feedback
               </p>
             </BaseButton>
           </footer>

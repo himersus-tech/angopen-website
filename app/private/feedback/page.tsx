@@ -68,8 +68,7 @@ export default function FeedbackPage() {
 
   const feedbackMutation = useMutation({
     mutationFn: submitFeedback,
-    onSuccess: (data) => {
-      console.log("Feedback enviado com sucesso:", data);
+    onSuccess: () => {
       feedback.refetch();
       setOpenModal(false);
       reset();
@@ -79,7 +78,6 @@ export default function FeedbackPage() {
       });
     },
     onError: (error) => {
-      console.error("Erro ao enviar feedback:", error);
       if (axios.isAxiosError(error)) {
         const mensagem =
           error.response?.data?.message ||
@@ -126,7 +124,6 @@ export default function FeedbackPage() {
         evaluation,
       })
       .catch(() => {
-        // deixa o onError da mutation tratar — só evita o unhandled rejection
       });
   };
   return (
