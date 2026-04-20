@@ -77,12 +77,6 @@ export default function Home() {
           </p>
         </div>
         <nav className="flex items-center gap-16">
-          {/* <DarkButton className="pot:flex! hidden!">
-            <Search className="size-4 text-white/50" />
-            <p className="pt-0.5 pot:font-semibold! text-[15px] text-white">
-              Pesquisa
-            </p>
-          </DarkButton> */}
           {menuNavbar.map((item, index) => (
             <button
               className="pot:font-semibold! cursor-pointer pot:flex hidden transition-all hover:text-white/60 text-[15px] text-white"
@@ -177,7 +171,9 @@ export default function Home() {
                       />
                     </div>
                     <div>
-                      <p className="text-white pot:font-semibold">{item.name}</p>
+                      <p className="text-white pot:font-semibold">
+                        {item.name}
+                      </p>
                       <p className="text-zinc-400 line-clamp-1 text-sm">
                         {item.area}
                       </p>
