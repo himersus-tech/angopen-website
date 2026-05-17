@@ -9,6 +9,11 @@
   src: url("./fonts/Givonic-Regular.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Borna";
+  src: url("./fonts/borna-medium.otf") format("opentype");
+}
+
 @theme inline {
   --breakpoint-smaller: 23rem;
   --breakpoint-small: 37.4375rem;
@@ -22,6 +27,7 @@
   --font-mono: var(--font-geist-mono);
   --font-inter: var(--font-inter);
   --font-givonic: "Givonic", sans-serif;
+  --font-borna: "Borna", sans-serif;
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -64,7 +70,7 @@
 }
 
 * {
-  font-family: var(--font-givonic);
+  font-family: var(--font-borna);
 }
 
 body {
@@ -156,4 +162,8 @@ body {
   box-shadow: 10px 2px 128px 27px #d2551faf;
   -webkit-box-shadow: 10px 2px 128px 27px #d2551faf;
   -moz-box-shadow: 10px 2px 128px 27px #d2551faf;
+}
+
+button {
+  cursor: pointer;
 }

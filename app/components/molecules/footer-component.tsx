@@ -1,6 +1,7 @@
 import { footerContent } from "@/app/types";
 import { LogoComponent } from "../atoms/logo-component";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface FooterComponentProps {
   className?: string;
@@ -8,12 +9,19 @@ interface FooterComponentProps {
 
 export default function FooterComponent({ className }: FooterComponentProps) {
   return (
-    <footer
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
       className={`border-t p-5 pt-10 mt-20 border-zinc-900 ${className || ""}`}
     >
       <div className="w-full pot:max-w-[90%] mx-auto grid grid-cols-1 gap-y-10 pot:grid-cols-[40%_20%_20%_20%] ">
         <header className="max-w-xs">
-          <Link href={"/"} className="flex items-center gap-3 text-white text-2xl">
+          <Link
+            href={"/"}
+            className="flex items-center gap-3 text-white text-2xl"
+          >
             <LogoComponent size={8} />
             <span className="mt-2 uppercase">{footerContent.brand.name}</span>
           </Link>
@@ -61,6 +69,6 @@ export default function FooterComponent({ className }: FooterComponentProps) {
           ))}
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

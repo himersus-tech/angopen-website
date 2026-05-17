@@ -19,6 +19,27 @@ import FooterComponent from "./components/molecules/footer-component";
 import { Menu } from "iconoir-react/regular";
 import { MobileMenu } from "./components/sheets/mobile-menu";
 import { useState } from "react";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+};
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  transition: { duration: 0.8 },
+};
 
 export default function Home() {
   const isAtTop = useIsScrolledToTop(10);
@@ -37,7 +58,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <motion.div initial="initial" animate="animate">
       <MobileMenu
         open={openMenu}
         onOpenChange={() => {
@@ -65,21 +86,22 @@ export default function Home() {
           transparent
         />
       </div>
-      <div
+      <motion.div
+        variants={fadeIn}
         className={`flex pot:py-5 py-4 z-50 sticky
           ${isAtTop ? "bg-transparent" : "bg-[#0a0a0a] border-b border-zinc-900"}
           top-0 left-0 right-0 items-center px-6 pot:px-20 justify-between`}
       >
         <div className="flex items-center gap-3">
           <LogoComponent size={7} />
-          <p className="ret:text-2xl text-xl text-white uppercase tracking-widest  mt-2 pot:font-extrabold">
+          <p className="ret:text-2xl text-xl text-white uppercase tracking-widest  mt-2 pot:font-medium">
             Angopen
           </p>
         </div>
         <nav className="flex items-center gap-16">
           {menuNavbar.map((item, index) => (
             <button
-              className="pot:font-semibold! cursor-pointer pot:flex hidden transition-all hover:text-white/60 text-[15px] text-white"
+              className="pot:font-medium! cursor-pointer pot:flex hidden transition-all hover:text-white/60 text-[15px] text-white"
               key={index}
               onClick={() => {
                 if (item.type === "internal") {
@@ -96,7 +118,7 @@ export default function Home() {
             onClick={() => router.push("/private/feedback")}
             className="pot:flex! hidden!"
           >
-            <p className="pt-0.5 pot:font-semibold! text-[15px] text-white">
+            <p className="pot:font-medium! text-[15px] text-white">
               Contribuir
             </p>
           </BaseButton>
@@ -107,22 +129,33 @@ export default function Home() {
             <Menu className="size-6 " />
           </button>
         </nav>
-      </div>
+      </motion.div>
       <header id="home" className="relative z-10">
-        <section>
+        <motion.section
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+        >
           <div className="pot:max-w-2xl pot:px-0 px-5 pt-32 mx-auto text-center">
-            <h1 className="text-white ret:text-6xl text-4xl pot:text-7xl pot:leading-20 pot:font-extrabold">
+            <motion.h1
+              variants={fadeInUp}
+              className="text-white ret:text-6xl text-4xl pot:text-7xl pot:leading-20 pot:font-medium"
+            >
               O Hub do <span className="text-base-design">Open Source</span>{" "}
               Angolano
-            </h1>
-            <div className="pt-10">
+            </motion.h1>
+            <motion.div variants={fadeInUp} className="pt-10">
               <p className="ret:text-lg text-white">
                 Descubra, colabore e impulsione o ecossistema de software livre
                 em Angola. Junte-se a nós para construir um futuro tecnológico
                 mais aberto e inovador.
               </p>
-            </div>
-            <div className="pt-10 px-5 w-full flex ret:flex-row flex-col items-center justify-center gap-3 ret:gap-5">
+            </motion.div>
+            <motion.div
+              variants={fadeInUp}
+              className="pt-10 px-5 w-full flex ret:flex-row flex-col items-center justify-center gap-3 ret:gap-3"
+            >
               <BaseButton
                 onClick={() => {
                   const url = process.env.NEXT_PUBLIC_WHATSAPP_GROUP;
@@ -130,7 +163,7 @@ export default function Home() {
                 }}
                 className="ret:w-auto w-full"
               >
-                <p className="pt-0.5 pot:font-semibold! text-[15px]  text-white">
+                <p className=" pot:font-semibold! text-[15px]  text-white">
                   Junte-se a nós
                 </p>
                 <ArrowUpRight className="size-4 stroke-4 text-white/50" />
@@ -139,24 +172,41 @@ export default function Home() {
                 onClick={() => router.push("/overview")}
                 className="ret:w-auto w-full"
               >
-                <p className="pt-0.5 pot:font-semibold! text-[15px] text-white">
+                <p className=" pot:font-semibold! text-[15px] text-white">
                   Visão Geral
                 </p>
               </DarkButton>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="mt-20 pot:mx-20 mx-3 super_shadow bg-[#0a0a0a] p-8 rounded-2xl border border-zinc-900">
-          <header>
-            <h2 className="pot:text-3xl text-2xl text-white pot:font-semibold">
-              Profissionais Open Source
+        <motion.section
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mt-20 pot:mx-20 mx-3 super_shadow bg-[#0a0a0a] p-8 rounded-2xl border border-zinc-900"
+        >
+          <header className="flex items-center justify-between">
+            <h2 className="pot:text-3xl text-2xl text-white pot:font-medium">
+              Comunidade & Software
             </h2>
-            <p className="text-zinc-600 text-lg uppercase">Angola</p>
+            <Link href={"/private/feedback"}>
+              <DarkButton>
+                <p className="pt-0.5 pot:font-semibold! text-[15px] text-white">
+                  Deixar Feedback
+                </p>
+                <ArrowUpRight className="size-4 stroke-4 text-white/50" />
+              </DarkButton>
+            </Link>
           </header>
-          <div className="mt-10 grid ret:grid-cols-2 grid-cols-1 pot:grid-cols-4 gap-4">
+          <motion.div
+            variants={staggerContainer}
+            className="mt-8 grid ret:grid-cols-2 grid-cols-1 pot:grid-cols-4 gap-4"
+          >
             {comments.map((item, index) => (
-              <div
+              <motion.div
+                variants={fadeInUp}
                 key={index}
                 className="flex flex-col border border-zinc-900 justify-between rounded-2xl  bg-zinc-900/20"
               >
@@ -218,35 +268,37 @@ export default function Home() {
                     <ArrowRight className="size-4 stroke-2 text-white/50" />
                   </button>
                 </footer>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          <footer className="flex items-center justify-end mt-10">
-            <Link href={"/private/feedback"}>
-              <DarkButton>
-                <p className="pt-0.5 pot:font-semibold! text-[15px] text-white">
-                  Deixar Feedback
-                </p>
-                <ArrowUpRight className="size-4 stroke-4 text-white/50" />
-              </DarkButton>
-            </Link>
-          </footer>
-        </section>
+          </motion.div>
+        </motion.section>
       </header>
 
       <main className="mt-42 px-6 pot:px-20">
         <section id="system">
-          <header>
+          <motion.header
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <p className="text-zinc-500 pb-5 text-center uppercase text-lg">
               Sistema
             </p>
-            <h2 className="text-white max-w-3xl mx-auto pot:leading-16 ret:text-4xl text-3xl pot:text-5xl text-center pot:font-extrabold">
+            <h2 className="text-white max-w-3xl mx-auto pot:leading-16 ret:text-4xl text-3xl pot:text-5xl text-center font-medium">
               Commitando para um Ecossistema de Software Livre
             </h2>
-          </header>
-          <div className="mt-16 pot:max-w-6xl mx-auto grid ret:grid-cols-2 pot:grid-cols-10 gap-2">
+          </motion.header>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            className="mt-16 pot:max-w-6xl mx-auto grid ret:grid-cols-2 pot:grid-cols-10 gap-2"
+          >
             {features.map((item, index) => (
-              <div
+              <motion.div
+                variants={fadeInUp}
                 key={index}
                 className={`h-80 p-5 ${index == 0 ? "pot:col-span-4" : index == 1 ? "pot:col-span-6" : "pot:col-span-5"} relative bg-zinc-900/30 flex overflow-hidden transition-all group hover:border-base-design cursor-pointer flex-col justify-between rounded-2xl border border-zinc-900`}
               >
@@ -262,7 +314,7 @@ export default function Home() {
                     <span>
                       {<item.icon className={`size-6 text-white `} />}
                     </span>
-                    <h3 className="text-white! text-xl pot:font-semibold">
+                    <h3 className="text-white! text-xl font-medium">
                       {item.title}
                     </h3>
                   </header>
@@ -279,17 +331,22 @@ export default function Home() {
                     </p>
                   ))}
                 </footer>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         <section id="community" className="mt-40">
-          <header>
+          <motion.header
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             <p className="text-zinc-500 pb-5 text-center uppercase text-lg">
               Comunidade
             </p>
-            <h2 className="text-white max-w-2xl mx-auto pot:leading-16 text-3xl ret:text-4xl pot:text-5xl text-center pot:font-extrabold">
+            <h2 className="text-white max-w-2xl mx-auto pot:leading-16 text-3xl ret:text-4xl pot:text-5xl text-center font-medium">
               Juntos, Construindo um Futuro de Código Aberto
             </h2>
             <p className="text-zinc-500 mt-5 text-center pot:text-lg max-w-xl mx-auto">
@@ -299,9 +356,15 @@ export default function Home() {
               colaborar em projetos e impulsionar o{" "}
               <span className="text-white">ecossistema</span>.
             </p>
-          </header>
+          </motion.header>
 
-          <div className="max-w-4xl mx-auto items-start  relative overflow-hidden  mt-16 flex flex-col gap-8">
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            className="max-w-4xl mx-auto items-start  relative overflow-hidden  mt-16 flex flex-col gap-8"
+          >
             <div className="w-full h-full absolute top-0 left-0 right-0 flex items-center justify-between">
               <div className="h-full w-40 bg-linear-to-r from-[#0a0a0a] to-transparent" />
               <div className="h-full w-40 bg-linear-to-r to-[#0a0a0a] from-transparent" />
@@ -316,8 +379,14 @@ export default function Home() {
                 </p>
               ))}
             </div>
-          </div>
-          <div className="max-w-3xl mx-auto items-start mt-5 relative overflow-hidden  flex flex-col gap-8">
+          </motion.div>
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            className="max-w-3xl mx-auto items-start mt-5 relative overflow-hidden  flex flex-col gap-8"
+          >
             <div className="w-full h-full absolute top-0 left-0 right-0 flex items-center justify-between">
               <div className="h-full w-40 bg-linear-to-r from-[#0a0a0a] to-transparent" />
               <div className="h-full w-40 bg-linear-to-r to-[#0a0a0a] from-transparent" />
@@ -332,8 +401,14 @@ export default function Home() {
                 </p>
               ))}
             </div>
-          </div>
-          <div className="max-w-2xl mx-auto items-start mt-5 relative overflow-hidden  flex flex-col gap-8">
+          </motion.div>
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            className="max-w-2xl mx-auto items-start mt-5 relative overflow-hidden  flex flex-col gap-8"
+          >
             <div className="w-full h-full absolute top-0 left-0 right-0 flex items-center justify-between">
               <div className="h-full w-40 bg-linear-to-r from-[#0a0a0a] to-transparent" />
               <div className="h-full w-40 bg-linear-to-r to-[#0a0a0a] from-transparent" />
@@ -348,9 +423,15 @@ export default function Home() {
                 </p>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <footer className="flex items-center justify-center mt-12">
+          <motion.footer
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex items-center justify-center mt-12"
+          >
             <BaseButton
               onClick={() => {
                 const url = process.env.NEXT_PUBLIC_WHATSAPP_GROUP;
@@ -360,10 +441,10 @@ export default function Home() {
             >
               Juntar-se à Comunidade
             </BaseButton>
-          </footer>
+          </motion.footer>
         </section>
       </main>
       <FooterComponent />
-    </div>
+    </motion.div>
   );
 }

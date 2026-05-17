@@ -1,6 +1,6 @@
 "use client";
 
-import { PanelLeft } from "lucide-react";
+import React, { useState } from "react";
 import { LogoComponent } from "../components/atoms/logo-component";
 import {
   RiAddLargeLine,
@@ -20,20 +20,20 @@ import {
   RiUserSmileLine,
 } from "@remixicon/react";
 import { DarkButton } from "../components/molecules/dark-button";
-import { useState } from "react";
 import DashboardPage from "./pages/dashboard-page";
 import FeedPage from "./pages/feed-page";
+import { AnimatePresence, motion } from "framer-motion";
 
-interface navigationItem {
+interface NavigationItem {
   section: string;
   items: {
     name: string;
     icon: React.ReactNode;
-    tab: tabPages;
+    tab: TabPage;
   }[];
 }
 
-const navigationItems: navigationItem[] = [
+const navigationItems: NavigationItem[] = [
   {
     section: "Geral",
     items: [
@@ -116,7 +116,7 @@ const navigationItems: navigationItem[] = [
   },
 ];
 
-type tabPages =
+type TabPage =
   | "dashboard"
   | "feed"
   | "destaques"
@@ -128,11 +128,44 @@ type tabPages =
   | "configuracoes"
   | "contribuicoes";
 
+const Tooltip = ({
+  text,
+  children,
+}: {
+  text: string;
+  children: React.ReactNode;
+}) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      className="relative flex items-center"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {children}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0, x: 5 }}
+            animate={{ opacity: 1, x: 10 }}
+            exit={{ opacity: 0, x: 5 }}
+            className="absolute left-full ml-2 px-3 py-1 bg-zinc-900 border border-zinc-800 text-white text-xs rounded-md whitespace-nowrap z-100 pointer-events-none"
+          >
+            {text}
+            <div className="absolute top-1/2 -left-1 -translate-y-1/2 border-y-4 border-y-transparent border-r-4 border-r-zinc-900" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export default function Dashboard() {
-  const [tabPages, setTabPages] = useState("dashboard");
+  const [activeTab, setActiveTab] = useState<TabPage>("dashboard");
 
   const renderTab = () => {
-    switch (tabPages) {
+    switch (activeTab) {
       case "dashboard":
         return <DashboardPage />;
       case "feed":
@@ -157,53 +190,60 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="h-dvh w-full grid grid-cols-[20%_80%]">
-      <header className="h-full sticky left-0 top-0 right-0 border-r border-zinc-900/60">
-        <div className=" h-16 px-4 border-b border-zinc-900/60  flex items-center justify-between">
+    <div className="h-dvh w-full grid grid-cols-[72px_1fr]">
+      <header className="h-full sticky left-0 top-0 right-0 border-r border-zinc-900/60 flex flex-col items-center">
+        <div className="h-16 w-full flex items-center justify-center border-b border-zinc-900/60">
           <LogoComponent size={6} />
-          <button>
-            <PanelLeft className="size-5 text-zinc-500" strokeWidth={1} />
-          </button>
         </div>
-        <nav className="flex flex-col pt-5 gap-10">
+        <nav className="flex flex-col pt-5 gap-6 w-full items-center">
           {navigationItems.map((section) => (
             <div
               key={section.section}
-              className="flex first:border-none first:pt-0 pt-7 border-t border-zinc-900/60  flex-col gap-4"
+              className="flex first:border-none first:pt-0 pt-4 border-t border-zinc-900/60 flex-col gap-3 w-full items-center"
             >
-              <h4 className="text-zinc-500 uppercase text-xs font-semibold px-4">
-                {section.section}
-              </h4>
-              <div className="flex -mt-1 gap-2 flex-col">
+              <div className="flex gap-2 flex-col items-center">
                 {section.items.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => setTabPages(item.tab)}
-                    className="flex cursor-pointer items-center gap-3 px-4 py-2 hover:bg-zinc-900/60 transition-colors rounded"
-                  >
-                    {item.icon}
-                    <span className="text-white">{item.name}</span>
-                  </button>
+                  <Tooltip key={item.name} text={item.name}>
+                    <button
+                      onClick={() => setActiveTab(item.tab)}
+                      className={`relative flex cursor-pointer items-center justify-center size-11 transition-all rounded-xl ${
+                        activeTab === item.tab
+                          ? "text-black"
+                          : "hover:bg-zinc-900/60 text-zinc-500 hover:text-white"
+                      }`}
+                    >
+                      {activeTab === item.tab && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute inset-0 bg-base-design rounded-xl z-0"
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                          }}
+                        />
+                      )}
+                      <div className="relative z-10 flex items-center justify-center">
+                        {item.icon &&
+                          React.cloneElement(
+                            item.icon as React.ReactElement<{
+                              className?: string;
+                            }>,
+                            {
+                              className: `size-5 ${
+                                activeTab === item.tab
+                                  ? "text-black"
+                                  : "text-zinc-500"
+                              }`,
+                            },
+                          )}
+                      </div>
+                    </button>
+                  </Tooltip>
                 ))}
               </div>
             </div>
           ))}
-          {/* <div className="mt-2 flex items-center justify-between rounded-lg border border-zinc-900/60 p-4 mx-4">
-            <div className="flex items-center gap-3">
-              <div className="size-10 rounded-full bg-amber-700" />
-              <div>
-                <h6 className="text-white line-clamp-1 text-ellipsis">
-                  Mário Salembe
-                </h6>
-                <p className="text-zinc-500 text-sm">@msalembe</p>
-              </div>
-            </div>
-            <div>
-              <button className="  text-zinc-500 hover:text-white">
-                <EllipsisVertical className="size-5" strokeWidth={1} />
-              </button>
-            </div>
-          </div> */}
         </nav>
       </header>
       <main className="h-full overflow-y-auto">
@@ -212,7 +252,7 @@ export default function Dashboard() {
             <h2 className="text-white text-lg font-semibold">
               {navigationItems
                 .flatMap((section) => section.items)
-                .find((item) => item.tab === tabPages)?.name || "Dashboard"}
+                .find((item) => item.tab === activeTab)?.name || "Dashboard"}
             </h2>
           </div>
           <div>
@@ -247,13 +287,23 @@ export default function Dashboard() {
               <RiNotificationLine className="size-5" strokeWidth={1} />
             </DarkButton>
             <div className="size-8 flex items-center justify-center rounded-full bg-white">
-              <p className="text-black mt-1 text-sm font-semibold">MS</p>
+              <p className="text-black text-sm font-semibold">Ma</p>
             </div>
           </div>
         </header>
 
         {/* POSTS SECTIONS */}
-        {renderTab()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            {renderTab()}
+          </motion.div>
+        </AnimatePresence>
       </main>
     </div>
   );

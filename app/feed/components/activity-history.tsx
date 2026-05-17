@@ -138,7 +138,7 @@ export function ActivityHistory() {
                       key={di}
                       title={`${cell.date.toLocaleDateString("pt-PT")} · ${cell.count} actividades · ${cell.xp} XP`}
                       className={[
-                        "size-3.5 rounded-xs cursor-pointer transition-all duration-100 hover:ring-1 hover:ring-white/30",
+                        "size-5 rounded-xs cursor-pointer transition-all duration-100 hover:ring-1 hover:ring-white/30",
                         intensity === "empty" &&
                           "bg-zinc-900 border border-zinc-800",
                         intensity === "low" &&
